@@ -1,5 +1,1 @@
-[
-  { "name": "1-cover.jpg", "query": "?shot=cover&photo=pier&caption=Sunset%20Heist", "w": 1080, "h": 1080 },
-  { "name": "2-editor.jpg", "query": "?shot=editor&photo=boulevard&caption=Boulevard%20Queen", "w": 1280, "h": 720 },
-  { "name": "3-cover.jpg", "query": "?shot=cover&photo=boulevard&caption=Boulevard%20Queen", "w": 1080, "h": 1080 }
-]
+[{"h":720,"name":"1-cover.jpg","query":"?shot=cover&layout=skyline&size=1920x1080&photo=pier&photo2=boulevard&caption=Neon%20Coast&subtitle=Sunset%20heist%20%C2%B7%202026","w":1280},{"h":720,"name":"2-editor.jpg","query":"?shot=editor&layout=skyline&size=1080x1080&photo=boulevard&photo2=pier&caption=Neon%20Coast","w":1280},{"h":1280,"name":"3-cover-portrait.jpg","query":"?shot=cover&layout=grid&size=1080x1350&photo=boulevard&photo2=pier&caption=Neon%20Coast&subtitle=Sunset%20heist%20%C2%B7%202026","w":1024},{"h":1080,"name":"4-cover-square.jpg","query":"?shot=cover&layout=split&size=1080x1080&photo=pier&photo2=boulevard&caption=Midnight%20Drive&subtitle=Neon%20coast%20%C2%B7%202026&color=%23ffd319","w":1080}]

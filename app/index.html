@@ -3,20 +3,109 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cover Snap</title>
+<title>Vice Cover Studio — neon sunset poster maker</title>
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-<main class="app">
-  <section class="controls">
-    <h1>Cover Snap</h1>
-    <p>A photo and a caption, made into a square cover.</p>
-    <label>Photo <input id="photo" type="file" accept="image/*"></label>
-    <label>Caption <input id="caption" type="text" maxlength="40" value="Sunset Heist"></label>
-    <button id="export" type="button">Export PNG 1080 x 1080</button>
-    <p id="status" role="status"></p>
+<main class="studio">
+  <section class="controls" aria-label="Cover controls">
+    <header class="brand">
+      <h1>Vice Cover Studio</h1>
+      <p>Turn your photo into a neon-sunset poster. Pick a layout, drop photos
+      into the panels, write a bold caption, export a PNG.</p>
+    </header>
+
+    <fieldset class="group">
+      <legend>1 · Layout</legend>
+      <div class="layouts" id="layouts">
+        <button type="button" data-layout="skyline" class="layout-btn is-active" aria-pressed="true">
+          <span class="mini mini-skyline" aria-hidden="true"></span>Skyline
+        </button>
+        <button type="button" data-layout="split" class="layout-btn" aria-pressed="false">
+          <span class="mini mini-split" aria-hidden="true"></span>Split
+        </button>
+        <button type="button" data-layout="grid" class="layout-btn" aria-pressed="false">
+          <span class="mini mini-grid" aria-hidden="true"></span>Grid
+        </button>
+        <button type="button" data-layout="single" class="layout-btn" aria-pressed="false">
+          <span class="mini mini-single" aria-hidden="true"></span>Single
+        </button>
+      </div>
+    </fieldset>
+
+    <fieldset class="group">
+      <legend>2 · Photo — <span id="panelName">Panel 1</span></legend>
+      <div class="row">
+        <label class="file-btn">Load photo
+          <input id="photoFile" type="file" accept="image/*">
+        </label>
+        <button id="fillAll" type="button">Use in all panels</button>
+        <button id="clearPanel" type="button">Clear panel</button>
+      </div>
+      <p class="hint">Click a panel in the preview to pick it. Photos stay on your
+      machine — nothing is uploaded.</p>
+      <div class="row">
+        <button id="samplePier" type="button">Sample: pier</button>
+        <button id="sampleBoulevard" type="button">Sample: boulevard</button>
+      </div>
+      <label class="slider">Zoom
+        <input id="zoom" type="range" min="1" max="3" step="0.01" value="1">
+        <output id="zoomVal">1.00&times;</output>
+      </label>
+      <label class="slider">Move sideways
+        <input id="panX" type="range" min="-1" max="1" step="0.01" value="0">
+      </label>
+      <label class="slider">Move up / down
+        <input id="panY" type="range" min="-1" max="1" step="0.01" value="0">
+      </label>
+    </fieldset>
+
+    <fieldset class="group">
+      <legend>3 · Caption</legend>
+      <label class="field">Title
+        <input id="caption" type="text" maxlength="28" value="Neon Coast">
+      </label>
+      <label class="field">Subtitle
+        <input id="subtitle" type="text" maxlength="48" value="Sunset heist · 2026">
+      </label>
+      <label class="slider">Title size
+        <input id="titleSize" type="range" min="60" max="140" step="1" value="100">
+        <output id="titleSizeVal">100%</output>
+      </label>
+      <div class="row swatches" id="swatches" role="group" aria-label="Title colour">
+        <button type="button" data-color="#ffffff" class="swatch is-active" style="--c:#ffffff" aria-label="White title"></button>
+        <button type="button" data-color="#ffd319" class="swatch" style="--c:#ffd319" aria-label="Yellow title"></button>
+        <button type="button" data-color="#ff2e88" class="swatch" style="--c:#ff2e88" aria-label="Pink title"></button>
+        <button type="button" data-color="#22d3ee" class="swatch" style="--c:#22d3ee" aria-label="Cyan title"></button>
+      </div>
+      <label class="field">Colour grade
+        <select id="grade">
+          <option value="sunset" selected>Sunset — orange into magenta</option>
+          <option value="neon">Neon night — purple and cyan</option>
+          <option value="golden">Golden hour — warm gold</option>
+        </select>
+      </label>
+    </fieldset>
+
+    <fieldset class="group">
+      <legend>4 · Export</legend>
+      <label class="field">Size
+        <select id="exportSize">
+          <option value="1080x1080" selected>1080 &times; 1080 — square post</option>
+          <option value="1080x1350">1080 &times; 1350 — portrait post</option>
+          <option value="1920x1080">1920 &times; 1080 — wide post</option>
+        </select>
+      </label>
+      <button id="export" type="button" class="primary">Export PNG</button>
+      <p id="status" role="status"></p>
+    </fieldset>
   </section>
-  <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
+
+  <section class="preview" aria-label="Live preview">
+    <canvas id="cover" width="1080" height="1080"></canvas>
+    <p class="preview-hint">Click a panel to edit its photo. The preview is the cover.</p>
+  </section>
 </main>
 <script type="module" src="./src/main.js"></script>
 </body>
